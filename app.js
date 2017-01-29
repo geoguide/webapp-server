@@ -14,7 +14,7 @@ app.use(stoopitHost);
 app.use(alefbetHost);
 
 app.get('/', function (req, res) {
-  res.send('Hello World!')
+  res.send('Hello ya jerk!')
 })
 
 app.listen(3000, function () {
