@@ -35,7 +35,7 @@ if(config.name == "prod"){
 
 	var httpsServer = https.createServer(options, app);
 	httpsServer.listen(443);
+} else {
+	console.log('['+config.name+'] starting on port',config.port);
+	httpServer.listen(config.port);	
 }
-
-console.log('['+config.name+'] starting on port',config.port);
-httpServer.listen(config.port);
