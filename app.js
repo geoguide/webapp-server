@@ -24,7 +24,10 @@ app.use(alefbetHost,express.static(__dirname + '/alefbetquiz.com'));
 
 app.get('/', function (req, res) {
   res.send('Hello ya jerk!')
-})
+});
+http.get('*',function(req,res){ 
+	console.log(req);
+}
 
 var httpServer = http.createServer(app);
 if(config.name == "prod"){
