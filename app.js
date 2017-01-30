@@ -4,6 +4,7 @@ var vhost = require( 'vhost' );
 var https = require('https');
 var http = require('http');
 var fs = require('fs');
+var forceSSL = require('express-force-ssl');
 
 var app = express();
 var credentials = {};
@@ -20,6 +21,7 @@ var alefbetHost = createVirtualHost("alefbetquiz.com", "alefbetquiz.com");
 //Use the virtual hosts
 app.use(stoopitHost);
 app.use(alefbetHost,express.static(__dirname + '/alefbetquiz.com'));
+app.use(forceSSL);
 
 app.get('/', function (req, res) {
   res.send('Hello ya jerk!')
