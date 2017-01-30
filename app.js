@@ -27,7 +27,7 @@ app.get('/', function (req, res) {
 });
 http.get('*',function(req,res){ 
 	console.log(req);
-}
+});
 
 var httpServer = http.createServer(app);
 if(config.name == "prod"){
