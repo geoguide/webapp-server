@@ -27,7 +27,7 @@ function ensureSecure(req, res, next){
 };
 
 app.all('*', ensureSecure); // at top of routing calls
-app.all('*',function(req,res){
+app.get('*',function(req,res){
 	if (req.headers.host === 'kaleidoscope.wtf') {
 		var stoopitHost = createVirtualHost("kaleidoscope.wtf", "kaleidoscope.wtf");
 		app.use(stoopitHost,express.static(__dirname + '/kaleidoscope.wtf'));
