@@ -32,7 +32,7 @@ if(config.name == "prod"){
 	     cert: fs.readFileSync('/etc/letsencrypt/live/kaleidoscope.wtf/fullchain.pem'),
 	     ca: fs.readFileSync('/etc/letsencrypt/live/kaleidoscope.wtf/chain.pem')
 	}
-
+	console.log('starting on 443');
 	var httpsServer = https.createServer(options, app);
 	httpsServer.listen(443);
 } else {
