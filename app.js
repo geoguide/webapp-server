@@ -15,7 +15,7 @@ var alefbetHost = createVirtualHost("alefbetquiz.com", "alefbetquiz.com");
 
 //Use the virtual hosts
 app.use(stoopitHost);
-app.use(alefbetHost);
+app.use(alefbetHost,express.static(__dirname + '/alefbetquiz.com');
 
 app.get('/', function (req, res) {
   res.send('Hello ya jerk!')
