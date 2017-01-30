@@ -31,7 +31,7 @@ var stoopitHost = createVirtualHost("kaleidoscope.wtf", "kaleidoscope.wtf");
 var alefbetHost = createVirtualHost("alefbetquiz.com", "alefbetquiz.com");
 
 //Use the virtual hosts
-app.use(stoopitHost);
+app.use(stoopitHost,express.static(__dirname + '/kaleidoscope.wtf'));
 app.use(alefbetHost,express.static(__dirname + '/alefbetquiz.com'));
 
 app.get('/', function (req, res) {
