@@ -1,6 +1,10 @@
+var application_root = __dirname;
 var express = require('express');
-var app = express();
 var vhost = require( 'vhost' );
+
+var app = express();
+
+var config = require('./config.json')[process.env.NODE_ENV || 'dev'];
 
 function createVirtualHost(domainName, dirPath) {
     return vhost(domainName, express.static( dirPath ));
@@ -17,6 +21,6 @@ app.get('/', function (req, res) {
   res.send('Hello ya jerk!')
 })
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+app.listen(config.port, function () {
+  console.log('Example app listening on port '+config.port+'!')
 })
