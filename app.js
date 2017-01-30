@@ -3,6 +3,7 @@ var express = require('express');
 var vhost = require( 'vhost' );
 var https = require('https');
 var http = require('http');
+var fs = require('fs');
 
 var app = express();
 var credentials = {};
