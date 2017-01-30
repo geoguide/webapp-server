@@ -11,10 +11,6 @@ var credentials = {};
 
 var config = require('./config.json')[process.env.NODE_ENV || 'dev'];
 
-function createVirtualHost(domainName, dirPath) {
-    return vhost(domainName, express.static( dirPath ));
-}
-
 function ensureSecure(req, res, next){
   if(req.secure){
     // OK, continue
@@ -28,12 +24,9 @@ function ensureSecure(req, res, next){
 
 app.all('*', ensureSecure); // at top of routing calls
 
-var stoopitHost = createVirtualHost("kaleidoscope.wtf", "kaleidoscope.wtf");
-var alefbetHost = createVirtualHost("alefbetquiz.com", "alefbetquiz.com");
-
 //Use the virtual hosts
-app.use(alefbetHost,express.static(__dirname + '/alefbetquiz.com'));
-app.use(stoopitHost,express.static(__dirname + '/kaleidoscope.wtf'));
+app.use(vhost('alefbetquiz.com',express.static(__dirname + '/alefbetquiz.com')));
+app.use(vhost('kaleidoscope.wtf',express.static(__dirname + '/kaleidoscope.wtf')));
 
 
 app.get('/', function (req, res) {
