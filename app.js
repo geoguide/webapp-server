@@ -21,7 +21,6 @@ var alefbetHost = createVirtualHost("alefbetquiz.com", "alefbetquiz.com");
 //Use the virtual hosts
 app.use(stoopitHost);
 app.use(alefbetHost,express.static(__dirname + '/alefbetquiz.com'));
-app.use(forceSSL);
 
 app.get('/', function (req, res) {
   res.send('Hello ya jerk!')
@@ -37,6 +36,7 @@ if(config.name == "prod"){
 	console.log('starting on 443');
 	var httpsServer = https.createServer(options, app);
 	httpsServer.listen(443);
+	app.use(forceSSL);
 }
 
 console.log('['+config.name+'] starting on port',config.port);
