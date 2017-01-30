@@ -27,13 +27,16 @@ function ensureSecure(req, res, next){
 };
 
 app.all('*', ensureSecure); // at top of routing calls
+if (req.headers.host === 'kaleidoscope.wtf') {
+	var stoopitHost = createVirtualHost("kaleidoscope.wtf", "kaleidoscope.wtf");
+	app.use(stoopitHost,express.static(__dirname + '/kaleidoscope.wtf'));
+} else {
+	var alefbetHost = createVirtualHost("alefbetquiz.com", "alefbetquiz.com");	
+	app.use(alefbetHost,express.static(__dirname + '/alefbetquiz.com'));
+}
 
-var stoopitHost = createVirtualHost("kaleidoscope.wtf", "kaleidoscope.wtf");
-var alefbetHost = createVirtualHost("alefbetquiz.com", "alefbetquiz.com");
 
 //Use the virtual hosts
-app.use(stoopitHost,express.static(__dirname + '/kaleidoscope.wtf'));
-app.use(alefbetHost,express.static(__dirname + '/alefbetquiz.com'));
 
 app.get('/', function (req, res) {
   res.send('Hello ya jerk!')
