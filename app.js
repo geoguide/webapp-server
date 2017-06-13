@@ -22,7 +22,7 @@ function ensureSecure(req, res, next){
   res.redirect('https://' + req.hostname + req.url); // express 4.x
 };
 
-app.all('*', ensureSecure); // at top of routing calls
+//app.all('*', ensureSecure); // at top of routing calls
 
 //Use the virtual hosts
 app.use(vhost('alefbetquiz.com',express.static(__dirname + '/alefbetquiz.com')));
