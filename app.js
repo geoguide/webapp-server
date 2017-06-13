@@ -44,7 +44,7 @@ if(config.name == "prod"){
 	console.log('starting on 443');
 	//var httpsServer = https.createServer(options, app);
 	//httpsServer.listen(443);
-	httpServer.listen(80);
+	//httpServer.listen(80);
 	//app.use(forceSSL);
 }
 
