@@ -36,14 +36,15 @@ app.get('/', function (req, res) {
 
 var httpServer = http.createServer(app);
 if(config.name == "prod"){
-	var options = {
+	/*var options = {
 	     key: fs.readFileSync('/etc/letsencrypt/live/kaleidoscope.wtf/privkey.pem'),
 	     cert: fs.readFileSync('/etc/letsencrypt/live/kaleidoscope.wtf/fullchain.pem'),
 	     ca: fs.readFileSync('/etc/letsencrypt/live/kaleidoscope.wtf/chain.pem')
-	}
+	}*/
 	console.log('starting on 443');
-	var httpsServer = https.createServer(options, app);
-	httpsServer.listen(443);
+	//var httpsServer = https.createServer(options, app);
+	//httpsServer.listen(443);
+	var httpServer = http.createServer(app).listen(80);
 	app.use(forceSSL);
 }
 
