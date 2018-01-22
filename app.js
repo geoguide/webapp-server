@@ -25,7 +25,7 @@ function ensureSecure(req, res, next){
 //app.all('*', ensureSecure); // at top of routing calls
 
 //Use the virtual hosts
-app.use(vhost('alefbetquiz.com',express.static(__dirname + '/alefbetquiz.com')));
+app.use(vhost('alefbetquiz.com',express.static(__dirname + '/alefbetquiz.com/dist')));
 app.use(vhost('kaleidoscope.wtf',express.static(__dirname + '/kaleidoscope.wtf')));
 app.use(vhost('geoguide.me',express.static(__dirname + '/geoguide.me')));
 
