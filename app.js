@@ -9,6 +9,8 @@ var forceSSL = require('express-force-ssl');
 var app = express();
 var credentials = {};
 
+//test
+
 var config = require('./config.json')[process.env.NODE_ENV || 'dev'];
 
 function ensureSecure(req, res, next){
