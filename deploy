@@ -2,6 +2,7 @@ ssh ubuntu@35.160.236.159 <<EOF
  cd /home/ubuntu/webapp-server
  git pull       
  npm install --production       
- pm2 restart all
+ pm2 kill
+ pm2 start app.js
  exit       
 EOF
