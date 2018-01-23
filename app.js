@@ -31,7 +31,7 @@ app.use(vhost('geoguide.me',express.static(__dirname + '/geoguide.me')));
 
 
 app.get('/', function (req, res) {
-  res.send('vhosts didn\'t catch this! :(')
+  res.send('vhosts didn\'t catch this! but at least jenkins is workin :(')
 });
 
 var httpServer = http.createServer(app);
