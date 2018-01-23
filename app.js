@@ -4,6 +4,7 @@ var vhost = require( 'vhost' );
 var https = require('https');
 var http = require('http');
 var fs = require('fs');
+var path = require("path");
 var forceSSL = require('express-force-ssl');
 //do something
 var app = express();
