@@ -37,7 +37,7 @@ app.all(/.*/, function(req, res, next) {
 });
 
 //Use the virtual hosts
-app.use(vhost('*.alefbetquiz.com', express.static(path.join(__dirname, 'alefbetquiz.com/dist'))));
+app.use(vhost('*.alefbetquiz.com', express.static(path.join(__dirname, 'alefbetquiz.com/app'))));
 app.use(vhost('kaleidoscope.wtf',express.static(__dirname + '/kaleidoscope.wtf')));
 app.use(vhost('geoguide.me',express.static(__dirname + '/geoguide.me')));
 
