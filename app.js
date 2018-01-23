@@ -24,6 +24,17 @@ function ensureSecure(req, res, next){
 
 //app.all('*', ensureSecure); // at top of routing calls
 
+
+//Ensure all are going to www.
+app.all(/.*/, function(req, res, next) {
+  var host = req.header("host");
+  if (host.match(/^www\..*/i)) {
+    next();
+  } else {
+    res.redirect(301, "http://www." + host);
+  }
+});
+
 //Use the virtual hosts
 app.use(vhost('*.alefbetquiz.com',express.static(__dirname + '/alefbetquiz.com')));
 app.use(vhost('kaleidoscope.wtf',express.static(__dirname + '/kaleidoscope.wtf')));
