@@ -40,6 +40,7 @@ app.all(/.*/, function(req, res, next) {
 app.use(vhost('*.alefbetquiz.com', express.static(path.join(__dirname, '/alefbetquiz.com/app'))));
 app.use(vhost('kaleidoscope.wtf',express.static(__dirname + '/kaleidoscope.wtf')));
 app.use(vhost('geoguide.me',express.static(__dirname + '/geoguide.me')));
+app.use(vhost('*.snackbrigade.com',express.static(__dirname + '/snackbrigade.com')));
 
 
 app.get('/', function (req, res) {
