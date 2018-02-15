@@ -24,7 +24,8 @@ function ensureSecure(req, res, next){
 };
 
 //app.all('*', ensureSecure); // at top of routing calls
-
+//Use ejs?
+app.set('view engine', 'ejs');
 
 //Ensure all are going to www.
 app.all(/.*/, function(req, res, next) {
