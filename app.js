@@ -45,6 +45,8 @@ app.use(vhost('*.scuar.agency',express.static(__dirname + '/scuar.agency', {
   extensions: ['html', 'htm']
 })));
 
+app.set(‘view engine’, ‘ejs’);
+
 
 app.get('/', function (req, res) {
   res.send('vhosts didn\'t catch this! but at least jenkins is workinasdfasdfasdf :(')
