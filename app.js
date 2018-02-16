@@ -43,12 +43,12 @@ app.use(vhost('kaleidoscope.wtf',express.static(__dirname + '/kaleidoscope.wtf')
 app.use(vhost('geoguide.me',express.static(__dirname + '/geoguide.me')));
 app.use(vhost('*.snackbrigade.com',express.static(__dirname + '/snackbrigade.com')));
 app.use(vhost('*.scuar.agency',express.static(__dirname + '/scuar.agency', {
-  extensions: ['html', 'htm','ejs']
+  extensions: ['html', 'htm', 'ejs']
 })));
 
 
 app.get('/', function (req, res) {
-  res.send('vhosts didn\'t catch this! but at least jenkins is workinasdfasdfasdf :(')
+  res.send('vhosts didn\'t catch this! but at least jenkins is working :(')
 });
 
 var httpServer = http.createServer(app);
