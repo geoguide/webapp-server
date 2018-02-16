@@ -35,16 +35,15 @@ app.all(/.*/, function(req, res, next) {
   }
 });
 //Use ejs?
-app.set('view engine', 'ejs');
+
 
 //Use the virtual hosts
 app.use(vhost('*.alefbetquiz.com', express.static(path.join(__dirname, '/alefbetquiz.com/app'))));
 app.use(vhost('kaleidoscope.wtf',express.static(__dirname + '/kaleidoscope.wtf')));
 app.use(vhost('geoguide.me',express.static(__dirname + '/geoguide.me')));
 app.use(vhost('*.snackbrigade.com',express.static(__dirname + '/snackbrigade.com')));
-app.use(vhost('*.scuar.agency',express.static(__dirname + '/scuar.agency', {
-  extensions: ['ejs']
-})));
+app.use(vhost('*.scuar.agency',express.static(__dirname + '/scuar.agency')));
+app.set('view engine', 'ejs');
 
 
 
