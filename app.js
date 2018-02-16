@@ -34,6 +34,8 @@ app.all(/.*/, function(req, res, next) {
     res.redirect(301, "http://www." + host);
   }
 });
+//Use ejs?
+app.set('view engine', 'ejs');
 
 //Use the virtual hosts
 app.use(vhost('*.alefbetquiz.com', express.static(path.join(__dirname, '/alefbetquiz.com/app'))));
@@ -43,8 +45,7 @@ app.use(vhost('*.snackbrigade.com',express.static(__dirname + '/snackbrigade.com
 app.use(vhost('*.scuar.agency',express.static(__dirname + '/scuar.agency', {
   extensions: ['ejs']
 })));
-//Use ejs?
-app.set('view engine', 'ejs');
+
 
 
 app.get('/', function (req, res) {
