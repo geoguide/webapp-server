@@ -46,7 +46,8 @@ app.use(vhost('kaleidoscope.wtf',express.static(__dirname + '/kaleidoscope.wtf')
 app.use(vhost('geoguide.me',express.static(__dirname + '/geoguide.me')));
 app.use(vhost('*.snackbrigade.com',express.static(__dirname + '/snackbrigade.com')));
 app.use(vhost('*.scuar.agency', serveStatic(__dirname + '/scuar.agency', {
-  'index': ['inde.ejs']
+  index: ['index.ejs'],
+  extensions: ['ejs']
 })));
 
 
