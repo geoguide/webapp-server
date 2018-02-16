@@ -6,9 +6,11 @@ var http = require('http');
 var fs = require('fs');
 var path = require("path");
 var forceSSL = require('express-force-ssl');
+var serveStatic = require('serve-static')
 //do something
 var app = express();
 var credentials = {};
+
 
 var config = require('./config.json')[process.env.NODE_ENV || 'dev'];
 
@@ -43,16 +45,9 @@ app.use(vhost('*.alefbetquiz.com', express.static(path.join(__dirname, '/alefbet
 app.use(vhost('kaleidoscope.wtf',express.static(__dirname + '/kaleidoscope.wtf')));
 app.use(vhost('geoguide.me',express.static(__dirname + '/geoguide.me')));
 app.use(vhost('*.snackbrigade.com',express.static(__dirname + '/snackbrigade.com')));
-app.use(vhost('*.scuar.agency', express.static(__dirname + '/scuar.agency', {
-  extensions: ['ejs']
+app.use(vhost('*.scuar.agency', serveStatic(__dirname + '/scuar.agency', {
+  'index': ['inde.ejs']
 })));
-app.get('*.ejs', function(req, res) {
-   res.render(__dirname + '/scuar.agency' + req.url, function(err, result) {
-      res.end(result);
-   });
-});
-
-
 
 
 app.get('/', function (req, res) {
