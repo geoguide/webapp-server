@@ -42,7 +42,10 @@ app.use(vhost('*.alefbetquiz.com', express.static(path.join(__dirname, '/alefbet
 app.use(vhost('kaleidoscope.wtf',express.static(__dirname + '/kaleidoscope.wtf')));
 app.use(vhost('geoguide.me',express.static(__dirname + '/geoguide.me')));
 app.use(vhost('*.snackbrigade.com',express.static(__dirname + '/snackbrigade.com')));
-app.use(vhost('*.scuar.agency',express.static(__dirname + '/scuar.agency')));
+app.use(vhost('*.scuar.agency',express.static(__dirname + '/scuar.agency', {
+  extensions: ['ejs'],
+  index: 'index.ejs'
+})));
 app.set('view engine', 'ejs');
 
 
