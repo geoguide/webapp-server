@@ -25,7 +25,7 @@ function ensureSecure(req, res, next){
 
 //app.all('*', ensureSecure); // at top of routing calls
 //Use ejs?
-
+app.set('view engine', 'ejs');
 
 //Ensure all are going to www.
 app.all(/.*/, function(req, res, next) {
@@ -43,7 +43,7 @@ app.use(vhost('kaleidoscope.wtf',express.static(__dirname + '/kaleidoscope.wtf')
 app.use(vhost('geoguide.me',express.static(__dirname + '/geoguide.me')));
 app.use(vhost('*.snackbrigade.com',express.static(__dirname + '/snackbrigade.com')));
 app.use(vhost('*.scuar.agency',express.static(__dirname + '/scuar.agency', {
-  extensions: ['html', 'htm']
+  extensions: ['html', 'htm','ejs']
 })));
 
 
