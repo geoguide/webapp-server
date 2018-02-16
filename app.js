@@ -6,11 +6,9 @@ var http = require('http');
 var fs = require('fs');
 var path = require("path");
 var forceSSL = require('express-force-ssl');
-var serveStatic = require('serve-static')
 //do something
 var app = express();
 var credentials = {};
-
 
 var config = require('./config.json')[process.env.NODE_ENV || 'dev'];
 
@@ -26,6 +24,8 @@ function ensureSecure(req, res, next){
 };
 
 //app.all('*', ensureSecure); // at top of routing calls
+//Use ejs?
+app.set('view engine', 'ejs');
 
 //Ensure all are going to www.
 app.all(/.*/, function(req, res, next) {
@@ -37,22 +37,18 @@ app.all(/.*/, function(req, res, next) {
   }
 });
 
-//Use ejs?
-app.set('view engine', 'ejs');
-
 //Use the virtual hosts
 app.use(vhost('*.alefbetquiz.com', express.static(path.join(__dirname, '/alefbetquiz.com/app'))));
 app.use(vhost('kaleidoscope.wtf',express.static(__dirname + '/kaleidoscope.wtf')));
 app.use(vhost('geoguide.me',express.static(__dirname + '/geoguide.me')));
 app.use(vhost('*.snackbrigade.com',express.static(__dirname + '/snackbrigade.com')));
-app.use(vhost('*.scuar.agency', serveStatic(__dirname + '/scuar.agency', {
-  index: ['index.ejs'],
-  extensions: ['ejs']
+app.use(vhost('*.scuar.agency',express.static(__dirname + '/scuar.agency', {
+  extensions: ['html', 'htm','ejs'],
 })));
 
 
 app.get('/', function (req, res) {
-  res.send('vhosts didn\'t catch this! but at least jenkins is working :(')
+  res.send('vhosts didn\'t catch this! but at least jenkins is workinasdfasdfasdf :(')
 });
 
 var httpServer = http.createServer(app);
